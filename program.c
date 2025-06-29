@@ -2,10 +2,25 @@
 #include <string.h>
 #include <stdlib.h>
 
+#include <windows.h>
+#include <tchar.h>
+
 #define MAX_INPUT 1024
+
+
+void clear_screen() {
+    printf("\033[2J\033[H");
+    fflush(stdout);
+
+};
+
+
+
 
 int main() {
     char input[MAX_INPUT];
+
+
 
     while (1) {
         printf("posh> ");
@@ -23,7 +38,7 @@ int main() {
 
         // clear command
         if (strncmp(input, "clear", 5) == 0) {
-            system("cls");  
+            clear_screen();
             continue;
         }
 
@@ -33,8 +48,14 @@ int main() {
             continue;
         }
 
-        if (strncmp(input, "ls ", 3) == 0) {
-        {
+        // help 
+        if (strncmp(input, "help", 4) == 0) {
+            printf("echo : Usage 'echo <string>' - Returns string max size 1024 bytes\n");
+            printf("exit : Usage 'exit' - Closes posh\n");
+            printf("clear : Usage 'clear' - Clears terminal window\n");
+
+            continue;
+
 
         }
 
